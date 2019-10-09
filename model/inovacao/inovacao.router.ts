@@ -4,7 +4,9 @@ import { Inovacao } from "./inovacao.model";
 
 class InovacaoRouter extends Router{
     applyRoutes(app: restify.Server) {
-
+        app.get('/',(req, res, next) => {
+            res.json({message: "hello"})
+        })
         /**
          * Get all innovations
          */

@@ -4,6 +4,9 @@ const router_1 = require("../../common/router");
 const inovacao_model_1 = require("./inovacao.model");
 class InovacaoRouter extends router_1.Router {
     applyRoutes(app) {
+        app.get('/', (req, res, next) => {
+            res.json({ message: "hello" });
+        });
         /**
          * Get all innovations
          */

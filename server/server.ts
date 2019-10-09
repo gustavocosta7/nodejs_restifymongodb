@@ -1,11 +1,22 @@
 import * as restify from "restify";
+import * as mongoose from 'mongoose';
 import { environment } from "../common/environment";
+import {Router} from '../common/router';
 
 export class Server {
 
-    application: restify.Server
+    application: restify.Server;
 
-    initRoutes(): Promise<any> {
+    async initializeDb(): mongoose.MongooseThenable {
+        (<any> mongoose).Promise = global.Promise;
+        return mongoose.connect(environment.db.url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
+    }
+
+
+    async initRoutes(routers: Router[]): Promise<any> {
         return new Promise((resolve, reject) => {
             try{
                 this.application = restify.createServer({
@@ -14,24 +25,12 @@ export class Server {
                 })
 
                 this.application.use(restify.plugins.queryParser())
+                this.application.use(restify.plugins.bodyParser())
 
                 //routes
-
-                this.application.get('/info',((req, res, next) => {
-                    // res.status(200)
-                    // res.setHeader('Content-Type', 'application/json')
-                    res.json({
-                        browser: req.userAgent(),
-                        method: req.method,
-                        url: req.url,
-                        path: req.path(),
-                        query: req.query
-
-                    })
-                    return next()
-                }))
-
-
+                for (let router of routers) {
+                    router.applyRoutes(this.application);
+                }
 
                 this.application.listen(environment.server.port, () => {
                    resolve(this.application);
@@ -43,7 +42,10 @@ export class Server {
         })
     }
 
-    bootstrap(): Promise<Server> {
-        return this.initRoutes().then(() => this)
+    async bootstrap(routers: Router[] = []): Promise<Server> {
+        return this.initializeDb().then(() => {
+             this.initRoutes(routers).then(() => this)
+        })
+
     }
 }

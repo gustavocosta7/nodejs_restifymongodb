@@ -3,7 +3,7 @@ import {inovacoesRouter} from "./model/inovacao/inovacao.router";
 
 const server = new Server();
 server.bootstrap([inovacoesRouter]).then(server => {
-    console.log('Server is listening on:')
+    console.log('Server is listening')
 }).catch(error =>{
     console.log('Server failed to start')
     console.error(error)

@@ -3,13 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 const inovacaoSchema = new mongoose.Schema({
     matricula: {
-        type: String
+        type: String,
+        required: true
     },
     numero: {
         type: String
     },
     dt_criacao: {
         type: Date,
+        required: true,
         default: Date.now()
     },
     dt_avaliacao: {
@@ -19,7 +21,8 @@ const inovacaoSchema = new mongoose.Schema({
         type: String
     },
     descricao: {
-        type: String
+        type: String,
+        required: true
     },
     comentario: {
         type: String
@@ -34,10 +37,12 @@ const inovacaoSchema = new mongoose.Schema({
         type: String
     },
     link_anexo: {
-        type: String
+        type: String,
+        required: true
     },
     status: {
-        type: String
+        type: String,
+        required: true,
     }
 });
 exports.Inovacao = mongoose.model('Innovation', inovacaoSchema);

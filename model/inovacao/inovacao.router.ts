@@ -22,11 +22,6 @@ class InovacaoRouter extends ModelRouter<Inovacao>{
     }
 
     applyRoutes(app: restify.Server) {
-
-        app.get('/',(req, res, next) => {
-            res.json({message: "hello"})
-                .catch(next);
-        })
         /**
          * Get all innovations
          */

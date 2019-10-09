@@ -20,10 +20,6 @@ class InovacaoRouter extends model_router_1.ModelRouter {
         // })
     }
     applyRoutes(app) {
-        app.get('/', (req, res, next) => {
-            res.json({ message: "hello" })
-                .catch(next);
-        });
         /**
          * Get all innovations
          */

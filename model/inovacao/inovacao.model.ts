@@ -52,7 +52,6 @@ const inovacaoSchema = new mongoose.Schema({
     },
     link_anexo: {
         type: String,
-        required: true
     },
     status: {
         type: String,

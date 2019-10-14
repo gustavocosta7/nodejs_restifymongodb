@@ -50,9 +50,9 @@ const inovacaoSchema = new mongoose.Schema({
     situacao_atual: {
         type: String
     },
-    link_anexo: {
-        type: String,
-    },
+    link_anexo:[{
+        type: String
+    }],
     status: {
         type: String,
         required: true,

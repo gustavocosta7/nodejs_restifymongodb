@@ -11,7 +11,7 @@ export interface Inovacao extends mongoose.Document {
     classificacao: string,
     dt_prazo: string,
     situacao_atual: string,
-    link_anexo: string,
+    link_anexo: [string],
     status: string
 }
 
@@ -50,9 +50,9 @@ const inovacaoSchema = new mongoose.Schema({
     situacao_atual: {
         type: String
     },
-    link_anexo:[{
-        type: String
-    }],
+    link_anexo:[
+        
+    ],
     status: {
         type: String,
         required: true,

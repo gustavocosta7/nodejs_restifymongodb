@@ -17,7 +17,6 @@ export class Server {
         })
     }
 
-
     initRoutes(routers: Router[]): Promise<any> {
         return new Promise((resolve, reject) => {
             try{

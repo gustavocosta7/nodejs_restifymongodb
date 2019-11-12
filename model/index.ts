@@ -1,0 +1,7 @@
+export { avaliacaoRouter } from './avaliacao/avaliacao.router'
+export { avaliadorRouter } from './avaliador/avaliador.router'
+export { classificacaoRouter } from './classificacao/classificacao.router'
+export { inovacoesRouter } from './inovacao/inovacao.router'
+export { reuniaoRouter } from './reuniao/reuniao.router'
+export { setorRouter } from './setor/setor.router'
+export { sistemaRouter } from './sistema/sistema.router'

@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const model_router_1 = require("../../common/model-router");
-const inovacao_model_1 = require("./inovacao.model");
-class InovacaoRouter extends model_router_1.ModelRouter {
+const sistema_model_1 = require("./sistema.model");
+class SistemaRouter extends model_router_1.ModelRouter {
     constructor() {
-        super(inovacao_model_1.Inovacao);
+        super(sistema_model_1.Sistema);
         this.findByMatricula = (req, resp, next) => {
             if (req.query.matricula) {
-                inovacao_model_1.Inovacao.find({ autor_matricula: req.query.matricula })
+                sistema_model_1.Sistema.find({ matricula: req.query.matricula })
                     .then(this.renderAll(resp, next))
                     .catch(next);
             }
@@ -23,17 +23,17 @@ class InovacaoRouter extends model_router_1.ModelRouter {
         /**
          * Get all innovations
          */
-        app.get('/inovacao', this.findAll);
-        // app.get('/inovacao/:matricula',[this.findByMatricula, this.findAll]);'
-        app.get('/inovacao/:matricula', [this.findByMat, this.findAll]);
+        app.get('/sistema', [this.findByMatricula, this.findAll]);
+        // app.get({path:'/inovacao', version: '1.0.0'},this.findAll);
+        // app.get('/inovacao',this.findAll);
         /**
          * Get a specify innovation
          */
-        // app.get('/inovacao/:id',this.findById);
+        app.get('/sistema/:id', this.findById);
         /**
          * Insert new document in db
          */
-        app.post('/inovacao', this.save);
+        app.post('/sistema', this.save);
     }
 }
-exports.inovacoesRouter = new InovacaoRouter();
+exports.sistemaRouter = new SistemaRouter();

@@ -1,63 +1,55 @@
 import * as mongoose from 'mongoose'
+import validate = WebAssembly.validate;
 
 export interface Inovacao extends mongoose.Document {
-    matricula: string,
-    numero: string,
+    autor_matricula: string,
+    descricao_inovacao: string,
+    anexo: [string],
+    setor_autor: string,
     dt_criacao: Date,
-    dt_avaliacao: Date,
-    perspectiva: string,
-    descricao: string,
-    comentario: string,
-    classificacao: string,
-    dt_prazo: string,
-    situacao_atual: string,
-    link_anexo: [string],
-    status: string
+    num_inovacao: number,
+    identificador: string
 }
+let number;
 
-const inovacaoSchema = new mongoose.Schema({
-    matricula : {
+const inovacaoSchema = new mongoose.Schema(
+
+    {
+    autor_matricula : {
         type: String,
         required: true
     },
-    numero : {
-        type: String
+    descricao_inovacao : {
+        type: String,
+        required: true
     },
-    dt_criacao: {
+    anexo:[
+        
+    ],
+    setor_autor : {
+        type: String,
+        required: true
+    },
+    dt_criacao : {
         type: Date,
         required: true,
         default: Date.now()
     },
-    dt_avaliacao: {
-        type: Date
+    num_inovacao : {
+        type: Number
     },
-    perspectiva: {
+    identificador : {
         type: String
-    },
-    descricao: {
-        type: String,
-        required: true
-    },
-    comentario: {
-        type: String
-    },
-    classificacao: {
-        type: String
-    },
-    dt_prazo: {
-        type: String
-    },
-    situacao_atual: {
-        type: String
-    },
-    link_anexo:[
-        
-    ],
-    status: {
-        type: String,
-        required: true,
-        // enum: ['PENDENTE', 'EM AVALIAÇÃO', 'AVALIADO', 'CONCLUÍDO']
     }
 });
+//
+// inovacaoSchema.statics.countInDocuments = function(){
+//     return this.Inovacao.countDocuments();
+// }
 
-export const Inovacao = mongoose.model<Inovacao>('Innovation', inovacaoSchema);
+export const Inovacao = mongoose.model<Inovacao>('Inovacao', inovacaoSchema);
+//
+// number = async function ds(){
+//     const number =  await Inovacao.countDocuments();
+//     return number
+// }

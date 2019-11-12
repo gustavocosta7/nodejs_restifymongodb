@@ -1,47 +1,42 @@
 import {ModelRouter} from "../../common/model-router";
 import * as restify from 'restify'
-import { Inovacao } from "./inovacao.model";
+import { Sistema } from "./sistema.model";
 
-class InovacaoRouter extends ModelRouter<Inovacao>{
+class SistemaRouter extends ModelRouter<Sistema>{
 
     constructor(){
-        super(Inovacao)
+        super(Sistema)
         // this.on('beforeRender', document =>{
         //     document.password = undefined;
         // })
     }
 
-
     findByMatricula = (req, resp, next)=>{
         if(req.query.matricula){
-            Inovacao.find({autor_matricula: req.query.matricula})
+            Sistema.find({matricula: req.query.matricula})
                 .then(this.renderAll(resp, next))
-                .catch(next);
+                .catch(next)
         }else{
-            next();
+            next()
         }
     }
-
-
 
     applyRoutes(app: restify.Server) {
         /**
          * Get all innovations
          */
-        app.get('/inovacao',this.findAll);
-        // app.get('/inovacao/:matricula',[this.findByMatricula, this.findAll]);'
-        app.get('/inovacao/:matricula',[this.findByMat, this.findAll]);
+        app.get('/sistema',[this.findByMatricula, this.findAll]);
+        // app.get({path:'/inovacao', version: '1.0.0'},this.findAll);
+        // app.get('/inovacao',this.findAll);
         /**
          * Get a specify innovation
          */
-        // app.get('/inovacao/:id',this.findById);
-
-
+        app.get('/sistema/:id',this.findById);
         /**
          * Insert new document in db
          */
-        app.post('/inovacao', this.save )
+        app.post('/sistema', this.save )
     }
 
 }
-export const inovacoesRouter = new InovacaoRouter();
+export const sistemaRouter = new SistemaRouter();

@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var avaliacao_router_1 = require("./avaliacao/avaliacao.router");
+exports.avaliacaoRouter = avaliacao_router_1.avaliacaoRouter;
+var avaliador_router_1 = require("./avaliador/avaliador.router");
+exports.avaliadorRouter = avaliador_router_1.avaliadorRouter;
+var classificacao_router_1 = require("./classificacao/classificacao.router");
+exports.classificacaoRouter = classificacao_router_1.classificacaoRouter;
+var inovacao_router_1 = require("./inovacao/inovacao.router");
+exports.inovacoesRouter = inovacao_router_1.inovacoesRouter;
+var reuniao_router_1 = require("./reuniao/reuniao.router");
+exports.reuniaoRouter = reuniao_router_1.reuniaoRouter;
+var setor_router_1 = require("./setor/setor.router");
+exports.setorRouter = setor_router_1.setorRouter;
+var sistema_router_1 = require("./sistema/sistema.router");
+exports.sistemaRouter = sistema_router_1.sistemaRouter;

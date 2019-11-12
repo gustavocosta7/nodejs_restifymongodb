@@ -28,9 +28,12 @@ export abstract class Router extends EventEmitter {
             }else{
                 response.json([])
             }
+        }
+    }
 
-
-
+    renderCount(response: restify.Response) {
+        return (documents: any[]) => {
+            response.json(documents)
         }
     }
 

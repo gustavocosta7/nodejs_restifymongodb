@@ -28,5 +28,10 @@ class Router extends events_1.EventEmitter {
             }
         };
     }
+    renderCount(response) {
+        return (documents) => {
+            response.json(documents);
+        };
+    }
 }
 exports.Router = Router;

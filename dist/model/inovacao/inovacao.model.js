@@ -1,45 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
+let number;
 const inovacaoSchema = new mongoose.Schema({
-    matricula: {
+    autor_matricula: {
         type: String,
         required: true
     },
-    numero: {
-        type: String
+    descricao_inovacao: {
+        type: String,
+        required: true
+    },
+    anexo: [],
+    setor_autor: {
+        type: String,
+        required: true
     },
     dt_criacao: {
         type: Date,
         required: true,
         default: Date.now()
     },
-    dt_avaliacao: {
-        type: Date
+    num_inovacao: {
+        type: Number
     },
-    perspectiva: {
+    identificador: {
         type: String
-    },
-    descricao: {
-        type: String,
-        required: true
-    },
-    comentario: {
-        type: String
-    },
-    classificacao: {
-        type: String
-    },
-    dt_prazo: {
-        type: String
-    },
-    situacao_atual: {
-        type: String
-    },
-    link_anexo: [],
-    status: {
-        type: String,
-        required: true,
     }
 });
-exports.Inovacao = mongoose.model('Innovation', inovacaoSchema);
+//
+// inovacaoSchema.statics.countInDocuments = function(){
+//     return this.Inovacao.countDocuments();
+// }
+exports.Inovacao = mongoose.model('Inovacao', inovacaoSchema);
+//
+// number = async function ds(){
+//     const number =  await Inovacao.countDocuments();
+//     return number
+// }
